@@ -1,4 +1,4 @@
-css
+
 /* =========================================
    HARVESTHUB CHECKOUT PAGE
 ========================================= */
@@ -690,5 +690,23 @@ css
         align-items: flex-start;
         flex-direction: column;
     }
+}
+
+.checkout-empty {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.checkout-empty p {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.checkout-empty a {
+    color: var(--green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 

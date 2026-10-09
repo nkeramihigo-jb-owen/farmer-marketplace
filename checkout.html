@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | HarvestHub</title>
+
+    <meta
+        name="description"
+        content="Review your HarvestHub order and provide your delivery details."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/checkout.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">🌱</span>
+                <span>Harvest<span class="brand-highlight">Hub</span></span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="farmer-portal.html">Farmer Portal</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="cart.html" class="cart-link">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- CHECKOUT PAGE -->
+    <main class="checkout-page">
+
+        <section class="checkout-hero">
+            <div class="container">
+
+                <div class="checkout-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="marketplace.html">Marketplace</a>
+                    <span>/</span>
+                    <a href="cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout</span>
+                </div>
+
+                <div class="checkout-title">
+                    <div>
+                        <span class="section-eyebrow">ALMOST THERE</span>
+                        <h1>Complete Your <span>Order</span></h1>
+                        <p>
+                            Tell us where to reach you and how you'd like
+                            to receive your harvest.
+                        </p>
+                    </div>
+
+                    <div class="checkout-illustration" aria-hidden="true">
+                        🧺
+                    </div>
+                </div>
+
+                <div class="checkout-steps">
+                    <div class="checkout-step completed">
+                        <span>✓</span>
+                        <div>
+                            <strong>Shopping Cart</strong>
+                            <small>Products selected</small>
+                        </div>
+                    </div>
+
+                    <div class="checkout-step active">
+                        <span>2</span>
+                        <div>
+                            <strong>Checkout</strong>
+                            <small>Delivery details</small>
+                        </div>
+                    </div>
+
+                    <div class="checkout-step">
+                        <span>3</span>
+                        <div>
+                            <strong>Confirmation</strong>
+                            <small>Order placed</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="checkout-section">
+            <div class="container">
+
+                <form id="checkoutForm" novalidate>
+
+                    <div class="checkout-layout">
+
+                        <!-- CUSTOMER FORM -->
+                        <div class="checkout-main">
+
+                            <section class="checkout-card">
+
+                                <div class="checkout-card-heading">
+                                    <div class="checkout-card-icon">👤</div>
+
+                                    <div>
+                                        <h2>Customer Information</h2>
+                                        <p>How can the farmer contact you?</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full-width">
+                                        <label for="customerName">
+                                            Full Name <span>*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="customerName"
+                                            name="customerName"
+                                            placeholder="Enter your full name"
+                                            autocomplete="name"
+                                            minlength="2"
+                                            maxlength="100"
+                                            required
+                                        >
+
+                                        <small class="field-error"
+                                               id="customerNameError"></small>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="customerPhone">
+                                            Phone Number <span>*</span>
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            id="customerPhone"
+                                            name="customerPhone"
+                                            placeholder="+256 7XX XXX XXX"
+                                            autocomplete="tel"
+                                            maxlength="20"
+                                            required
+                                        >
+
+                                        <small class="field-hint">
+                                            Use a number the farmer can reach.
+                                        </small>
+
+                                        <small class="field-error"
+                                               id="customerPhoneError"></small>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="customerEmail">
+                                            Email Address
+                                            <span class="optional-label">
+                                                Optional
+                                            </span>
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            id="customerEmail"
+                                            name="customerEmail"
+                                            placeholder="you@example.com"
+                                            autocomplete="email"
+                                            maxlength="150"
+                                        >
+
+                                        <small class="field-error"
+                                               id="customerEmailError"></small>
+                                    </div>
+
+                                </div>
+
+                            </section>
+
+
+                            <!-- DELIVERY DETAILS -->
+                            <section class="checkout-card">
+
+                                <div class="checkout-card-heading">
+                                    <div class="checkout-card-icon">📍</div>
+
+                                    <div>
+                                        <h2>Delivery Information</h2>
+                                        <p>Where should your order be delivered?</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid">
+
+                                    <div class="form-group">
+                                        <label for="district">
+                                            District or City <span>*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="district"
+                                            name="district"
+                                            placeholder="e.g. Kampala"
+                                            autocomplete="address-level1"
+                                            maxlength="100"
+                                            required
+                                        >
+
+                                        <small class="field-error"
+                                               id="districtError"></small>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="area">
+                                            Area or Neighbourhood <span>*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="area"
+                                            name="area"
+                                            placeholder="e.g. Ntinda"
+                                            maxlength="100"
+                                            required
+                                        >
+
+                                        <small class="field-error"
+                                               id="areaError"></small>
+                                    </div>
+
+
+                                    <div class="form-group full-width">
+                                        <label for="deliveryAddress">
+                                            Delivery Address <span>*</span>
+                                        </label>
+
+                                        <textarea
+                                            id="deliveryAddress"
+                                            name="deliveryAddress"
+                                            rows="3"
+                                            placeholder="Describe the delivery location clearly"
+                                            autocomplete="street-address"
+                                            maxlength="500"
+                                            required
+                                        ></textarea>
+
+                                        <small class="field-hint">
+                                            Include useful landmarks if necessary.
+                                        </small>
+
+                                        <small class="field-error"
+                                               id="deliveryAddressError"></small>
+                                    </div>
+
+
+                                    <div class="form-group full-width">
+                                        <label for="deliveryInstructions">
+                                            Additional Instructions
+                                            <span class="optional-label">
+                                                Optional
+                                            </span>
+                                        </label>
+
+                                        <textarea
+                                            id="deliveryInstructions"
+                                            name="deliveryInstructions"
+                                            rows="2"
+                                            placeholder="Any special instructions for the farmer?"
+                                            maxlength="500"
+                                        ></textarea>
+                                    </div>
+
+                                </div>
+
+                            </section>
+
+
+                            <!-- ORDER NOTES -->
+                            <section class="checkout-card">
+
+                                <div class="checkout-card-heading">
+                                    <div class="checkout-card-icon">📝</div>
+
+                                    <div>
+                                        <h2>Order Preferences</h2>
+                                        <p>Anything else the farmer should know?</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="orderNotes">
+                                        Order Notes
+                                        <span class="optional-label">
+                                            Optional
+                                        </span>
+                                    </label>
+
+                                    <textarea
+                                        id="orderNotes"
+                                        name="orderNotes"
+                                        rows="3"
+                                        placeholder="For example, preferred collection time or product requirements"
+                                        maxlength="500"
+                                    ></textarea>
+                                </div>
+
+                            </section>
+
+
+                            <div class="checkout-notice">
+                                <span>🤝</span>
+
+                                <p>
+                                    <strong>Buying directly from farmers</strong>
+                                    <br>
+                                    Your order request will be saved in this
+                                    browser. You'll need to contact the farmer
+                                    to coordinate availability, delivery and
+                                    payment.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <!-- ORDER SUMMARY -->
+                        <aside class="checkout-sidebar">
+
+                            <section class="checkout-card order-summary">
+
+                                <div class="checkout-card-heading">
+                                    <div class="checkout-card-icon">🧺</div>
+
+                                    <div>
+                                        <h2>Your Order</h2>
+                                        <p id="summaryItemCount">
+                                            Loading products...
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    class="checkout-products"
+                                    id="checkoutProducts"
+                                >
+                                    <!-- Products rendered by JavaScript -->
+                                </div>
+
+
+                                <div class="checkout-summary-divider"></div>
+
+
+                                <div class="checkout-summary-line">
+                                    <span>Subtotal</span>
+                                    <strong id="checkoutSubtotal">UGX 0</strong>
+                                </div>
+
+
+                                <div class="checkout-summary-line">
+                                    <span>Delivery</span>
+                                    <span class="delivery-pending">
+                                        To be arranged
+                                    </span>
+                                </div>
+
+
+                                <div class="checkout-summary-divider"></div>
+
+
+                                <div class="checkout-total">
+                                    <span>Estimated Total</span>
+                                    <strong id="checkoutTotal">UGX 0</strong>
+                                </div>
+
+
+                                <p class="checkout-total-note">
+                                    Delivery charges are not included.
+                                    Confirm the final cost with the farmer.
+                                </p>
+
+
+                                <div
+                                    class="checkout-error"
+                                    id="checkoutError"
+                                    role="alert"
+                                    hidden
+                                ></div>
+
+
+                                <button
+                                    type="submit"
+                                    class="button button-primary place-order-button"
+                                    id="placeOrderButton"
+                                >
+                                    <span>Place My Order</span>
+                                    <span>→</span>
+                                </button>
+
+
+                                <a href="cart.html" class="edit-cart-link">
+                                    ← Return to shopping cart
+                                </a>
+
+
+                                <div class="checkout-payment-note">
+                                    <span>ℹ️</span>
+                                    <p>
+                                        This demo does not collect payments
+                                        or process transactions.
+                                    </p>
+                                </div>
+
+                            </section>
+
+
+                            <div class="checkout-trust-card">
+                                <span>🌱</span>
+                                <div>
+                                    <strong>Fresh from the farm</strong>
+                                    <p>
+                                        Connect with local farmers and support
+                                        agricultural businesses.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>
+                © <span id="currentYear"></span> HarvestHub.
+                Connecting farms to homes. 🌱
+            </p>
+
+            <a href="marketplace.html">Continue shopping →</a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
