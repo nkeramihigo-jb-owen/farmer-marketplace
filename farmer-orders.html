@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | HarvestHub</title>
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/farmer-auth.css">
+
+
+</head>
+
+<body class="farmer-auth-page">
+
+
+<header class="auth-header">
+    <a href="farmer-dashboard.html" class="auth-brand">
+        <span class="brand-icon">🌱</span>
+        HarvestHub
+    </a>
+
+    <nav class="farmer-top-nav">
+        <a href="farmer-dashboard.html">Dashboard</a>
+        <a href="farmer-products.html">My Products</a>
+        <button type="button" id="farmerLogout" class="dashboard-logout">
+            Log Out
+        </button>
+    </nav>
+</header>
+
+<main class="farmer-orders-container">
+
+    <section class="products-page-heading">
+        <div>
+            <span class="auth-eyebrow">YOUR SALES</span>
+            <h1>My <span>Orders</span> 📦</h1>
+            <p>Review orders containing products from your farm.</p>
+        </div>
+
+        <a href="farmer-products.html" class="dashboard-marketplace-link">
+            Manage Products →
+        </a>
+    </section>
+
+    <section class="order-summary-grid">
+
+        <article class="inventory-stat">
+            <span>📋</span>
+            <div>
+                <p>Orders</p>
+                <strong id="farmerOrderCount">0</strong>
+            </div>
+        </article>
+
+        <article class="inventory-stat">
+            <span>🧺</span>
+            <div>
+                <p>Items Ordered</p>
+                <strong id="farmerItemsCount">0</strong>
+            </div>
+        </article>
+
+        <article class="inventory-stat">
+            <span>💰</span>
+            <div>
+                <p>Value of Your Items</p>
+                <strong id="farmerSalesValue">UGX 0</strong>
+            </div>
+        </article>
+
+    </section>
+
+    <div id="ordersMessage" class="auth-message" role="status" hidden></div>
+
+    <section id="farmerOrdersList" class="farmer-orders-list"></section>
+
+    <section id="emptyFarmerOrders" class="empty-products" hidden>
+        <span>📦</span>
+        <h3>No orders for your farm yet</h3>
+        <p>
+            When a buyer places an order containing your products,
+            it will appear here.
+        </p>
+        <a href="farmer-products.html" class="dashboard-marketplace-link">
+            Review Your Products →
+        </a>
+    </section>
+
+</main>
+
+<footer class="auth-footer">
+    <p>© 2026 HarvestHub. Growing opportunities together. 🌱</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/farmer-orders.js"></script>
+
+
+</body>
+</html>
