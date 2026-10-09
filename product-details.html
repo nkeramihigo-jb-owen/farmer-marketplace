@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#245c3a">
+
+
+<title>Product Details | HarvestHub</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product-details.css">
+
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+
+<a href="index.html" class="brand">
+    <span class="brand-icon">✳</span>
+    <span>Harvest<span class="brand-accent">Hub</span></span>
+</a>
+
+<nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="marketplace.html" class="nav-active">Marketplace</a>
+    <a href="marketplace.html#categories">Categories</a>
+</nav>
+
+<div class="header-actions">
+
+    <a href="cart.html" class="cart-link">
+        🛒 Cart
+        <span id="cartCount" class="cart-count">0</span>
+    </a>
+
+    <a href="farmer-portal.html" class="button button-primary">
+        Farmer Portal ↗
+    </a>
+
+</div>
+
+<button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    aria-label="Open navigation"
+    aria-expanded="false"
+>
+    ☰
+</button>
+
+
+</header>
+
+<main class="details-page">
+
+
+<!-- BREADCRUMB -->
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+
+    <a href="index.html">Home</a>
+
+    <span>/</span>
+
+    <a href="marketplace.html">Marketplace</a>
+
+    <span>/</span>
+
+    <span id="breadcrumbProduct">Product Details</span>
+
+</nav>
+
+
+<!-- PRODUCT DETAILS -->
+
+<section id="productDetails" class="product-details-layout">
+
+    <!-- JAVASCRIPT WILL RENDER THE PRODUCT HERE -->
+
+    <div class="details-loading">
+        <span>🌱</span>
+        <p>Preparing your product details...</p>
+    </div>
+
+</section>
+
+
+<!-- FARMER INFORMATION -->
+
+<section class="seller-section" id="sellerSection" hidden>
+
+    <div class="seller-heading">
+        <span class="section-kicker">KNOW YOUR SELLER</span>
+        <h2>Meet the farmer<span>.</span></h2>
+        <p>
+            Learn about the farming business offering this product.
+        </p>
+    </div>
+
+    <div id="sellerCard" class="seller-card">
+
+        <!-- JAVASCRIPT WILL RENDER THE FARMER HERE -->
+
+    </div>
+
+</section>
+
+
+<!-- RELATED PRODUCTS -->
+
+<section class="related-section" id="relatedSection" hidden>
+
+    <div class="related-heading">
+
+        <div>
+            <span class="section-kicker">MORE FROM THE MARKETPLACE</span>
+            <h2>You might also like<span>.</span></h2>
+            <p>Discover more products from our farming community.</p>
+        </div>
+
+        <a href="marketplace.html" class="view-all-link">
+            View Marketplace →
+        </a>
+
+    </div>
+
+    <div id="relatedProducts" class="related-grid"></div>
+
+</section>
+
+
+<!-- PRODUCT NOT FOUND -->
+
+<section id="productNotFound" class="product-not-found" hidden>
+
+    <div class="not-found-icon">🌾</div>
+
+    <h1>Product not found</h1>
+
+    <p>
+        This listing may have been removed or the link may be incorrect.
+        Explore the marketplace to discover other products.
+    </p>
+
+    <a href="marketplace.html" class="button button-primary">
+        Explore Marketplace →
+    </a>
+
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+
+
+<a href="index.html" class="brand footer-brand">
+    <span class="brand-icon">✳</span>
+    <span>Harvest<span class="brand-accent">Hub</span></span>
+</a>
+
+<p>Connecting farmers and buyers, one harvest at a time.</p>
+
+<div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="cart.html">Shopping Cart</a>
+    <a href="farmer-portal.html">Farmer Portal</a>
+</div>
+
+<p class="copyright">
+    © <span id="currentYear"></span> HarvestHub.
+    Front-end demonstration project.
+</p>
+
+
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+
+<script src="js/product-details.js"></script>
+
+</body>
+</html>
