@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmation | HarvestHub</title>
+
+    <meta
+        name="description"
+        content="Review your HarvestHub order confirmation and farmer contact details."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order-confirmation.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/order-confirmation.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">🌱</span>
+                <span>Harvest<span class="brand-highlight">Hub</span></span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="farmer-portal.html">Farmer Portal</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="cart.html" class="cart-link">
+                    🛒 Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- CONFIRMATION PAGE -->
+    <main class="confirmation-page">
+
+        <section class="confirmation-hero">
+            <div class="container">
+
+                <div class="success-icon" aria-hidden="true">
+                    <span>✓</span>
+                </div>
+
+                <span class="success-eyebrow">
+                    HARVESTHUB ORDER UPDATE
+                </span>
+
+                <h1 id="confirmationTitle">
+                    Your order is confirmed!
+                </h1>
+
+                <p class="confirmation-intro" id="confirmationMessage">
+                    Thank you for supporting local farmers.
+                    Your order details are ready below.
+                </p>
+
+                <div class="order-reference">
+                    <span>YOUR ORDER REFERENCE</span>
+                    <strong id="orderReference">Loading...</strong>
+                    <button
+                        type="button"
+                        id="copyOrderReference"
+                        class="copy-reference-button"
+                    >
+                        Copy
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="confirmation-section">
+            <div class="container">
+
+                <div id="confirmationError" class="confirmation-error" hidden>
+                    <div class="confirmation-error-icon">📋</div>
+
+                    <h2>We couldn't find your order details</h2>
+
+                    <p>
+                        The order may have been placed in another browser
+                        session, or the saved order may no longer be available.
+                    </p>
+
+                    <a href="marketplace.html" class="button button-primary">
+                        Return to Marketplace
+                    </a>
+                </div>
+
+
+                <div id="confirmationContent">
+
+                    <!-- ORDER STATUS -->
+                    <section class="confirmation-status-card">
+
+                        <div class="status-icon">🌱</div>
+
+                        <div class="status-content">
+                            <div class="status-heading">
+                                <h2>Order status</h2>
+
+                                <span class="status-badge" id="orderStatus">
+                                    Pending
+                                </span>
+                            </div>
+
+                            <p>
+                                Your order request has been saved.
+                                Contact the farmer to confirm product
+                                availability, delivery arrangements and payment.
+                            </p>
+                        </div>
+
+                    </section>
+
+
+                    <div class="confirmation-layout">
+
+                        <!-- ORDER DETAILS -->
+                        <div class="confirmation-main">
+
+                            <section class="confirmation-card">
+
+                                <div class="confirmation-card-heading">
+                                    <div class="card-icon">🧺</div>
+
+                                    <div>
+                                        <h2>Order Summary</h2>
+                                        <p id="orderDate">Order date</p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="confirmed-products"
+                                    id="confirmedProducts"
+                                >
+                                    <!-- Rendered by JavaScript -->
+                                </div>
+
+                                <div class="confirmed-totals">
+
+                                    <div class="confirmed-total-line">
+                                        <span>Products subtotal</span>
+                                        <strong id="confirmedSubtotal">
+                                            UGX 0
+                                        </strong>
+                                    </div>
+
+                                    <div class="confirmed-total-line">
+                                        <span>Delivery</span>
+                                        <span class="pending-delivery">
+                                            To be arranged
+                                        </span>
+                                    </div>
+
+                                    <div class="confirmed-total-divider"></div>
+
+                                    <div class="confirmed-total-final">
+                                        <span>Estimated total</span>
+                                        <strong id="confirmedTotal">
+                                            UGX 0
+                                        </strong>
+                                    </div>
+
+                                    <p class="confirmed-total-note">
+                                        Delivery charges are not included.
+                                    </p>
+
+                                </div>
+
+                            </section>
+
+
+                            <!-- CUSTOMER DETAILS -->
+                            <section class="confirmation-card">
+
+                                <div class="confirmation-card-heading">
+                                    <div class="card-icon">📍</div>
+
+                                    <div>
+                                        <h2>Delivery Details</h2>
+                                        <p>Where your order is intended to go</p>
+                                    </div>
+                                </div>
+
+                                <div class="detail-grid">
+
+                                    <div class="detail-item">
+                                        <span>Customer</span>
+                                        <strong id="confirmedCustomer">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <span>Phone number</span>
+                                        <strong id="confirmedPhone">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <span>District or city</span>
+                                        <strong id="confirmedDistrict">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <span>Area or neighbourhood</span>
+                                        <strong id="confirmedArea">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div class="detail-item full-width">
+                                        <span>Delivery address</span>
+                                        <strong id="confirmedAddress">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div
+                                        class="detail-item full-width"
+                                        id="instructionsContainer"
+                                        hidden
+                                    >
+                                        <span>Delivery instructions</span>
+                                        <strong id="confirmedInstructions">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                    <div
+                                        class="detail-item full-width"
+                                        id="notesContainer"
+                                        hidden
+                                    >
+                                        <span>Order notes</span>
+                                        <strong id="confirmedNotes">
+                                            —
+                                        </strong>
+                                    </div>
+
+                                </div>
+
+                            </section>
+
+
+                            <!-- FARMER CONTACTS -->
+                            <section class="confirmation-card">
+
+                                <div class="confirmation-card-heading">
+                                    <div class="card-icon">🌾</div>
+
+                                    <div>
+                                        <h2>Your Farmers</h2>
+                                        <p>
+                                            Contact the relevant farmers
+                                            to coordinate your order.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="farmer-contact-list"
+                                    id="farmerContacts"
+                                >
+                                    <!-- Farmer contacts rendered by JavaScript -->
+                                </div>
+
+                            </section>
+
+                        </div>
+
+
+                        <!-- NEXT STEPS -->
+                        <aside class="confirmation-sidebar">
+
+                            <section class="next-steps-card">
+
+                                <span class="next-steps-eyebrow">
+                                    WHAT HAPPENS NEXT?
+                                </span>
+
+                                <h2>From farm to you</h2>
+
+                                <div class="timeline">
+
+                                    <div class="timeline-item">
+                                        <span class="timeline-number">
+                                            1
+                                        </span>
+
+                                        <div>
+                                            <strong>Contact your farmer</strong>
+
+                                            <p>
+                                                Use the contact details below
+                                                to discuss your order.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-item">
+                                        <span class="timeline-number">
+                                            2
+                                        </span>
+
+                                        <div>
+                                            <strong>Confirm availability</strong>
+
+                                            <p>
+                                                Agree on quantities, final
+                                                prices and delivery arrangements.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-item">
+                                        <span class="timeline-number">
+                                            3
+                                        </span>
+
+                                        <div>
+                                            <strong>Arrange payment</strong>
+
+                                            <p>
+                                                Agree directly with the farmer
+                                                on an appropriate payment method.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </section>
+
+
+                            <section class="confirmation-help-card">
+                                <span>🤝</span>
+
+                                <h3>Supporting local agriculture</h3>
+
+                                <p>
+                                    Every connection helps farmers reach
+                                    more customers and grow their businesses.
+                                </p>
+                            </section>
+
+
+                            <a
+                                href="marketplace.html"
+                                class="button button-primary confirmation-marketplace-button"
+                            >
+                                Continue Shopping
+                                <span>→</span>
+                            </a>
+
+                            <a
+                                href="index.html"
+                                class="confirmation-home-link"
+                            >
+                                Return to Homepage
+                            </a>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+
+            <p>
+                © <span id="currentYear"></span> HarvestHub.
+                Connecting farms to homes. 🌱
+            </p>
+
+            <a href="marketplace.html">Explore more products →</a>
+
+        </div>
+    </footer>
+
+</body>
+</html>
+

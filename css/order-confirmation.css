@@ -1,0 +1,804 @@
+
+/* =========================================
+   HARVESTHUB ORDER CONFIRMATION
+========================================= */
+
+.confirmation-page {
+    min-height: 70vh;
+    background: #f8faf7;
+}
+
+
+/* SUCCESS HERO */
+
+.confirmation-hero {
+    padding: 54px 0 48px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.success-icon {
+    display: grid;
+    width: 86px;
+    height: 86px;
+    margin: 0 auto 23px;
+    place-items: center;
+    border: 7px solid #e1f0da;
+    border-radius: 50%;
+    background: #edf7e7;
+    color: var(--green-dark);
+    box-shadow: 0 0 0 10px #f5faf1;
+}
+
+.success-icon span {
+    font-size: 2.7rem;
+    font-weight: 900;
+}
+
+.success-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.confirmation-hero h1 {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    line-height: 1.2;
+}
+
+.confirmation-intro {
+    max-width: 580px;
+    margin: 15px auto 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+
+/* ORDER REFERENCE */
+
+.order-reference {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 27px;
+    padding: 13px 17px;
+    border: 1px solid #dce9d6;
+    border-radius: 13px;
+    background: #f5faf2;
+}
+
+.order-reference > span {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+.order-reference > strong {
+    color: var(--green-dark);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.copy-reference-button {
+    padding: 7px 10px;
+    border: 1px solid #c9ddc0;
+    border-radius: 7px;
+    background: #fff;
+    color: var(--green-dark);
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.copy-reference-button:hover {
+    background: #eaf5e4;
+}
+
+
+/* MAIN SECTION */
+
+.confirmation-section {
+    padding: 40px 0 70px;
+}
+
+.confirmation-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    align-items: start;
+    gap: 26px;
+}
+
+.confirmation-main {
+    display: grid;
+    gap: 22px;
+    min-width: 0;
+}
+
+.confirmation-card {
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 24px rgba(20, 50, 25, 0.035);
+}
+
+.confirmation-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 25px;
+}
+
+.card-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 14px;
+    background: #edf6e9;
+    font-size: 1.4rem;
+}
+
+.confirmation-card-heading h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.13rem;
+}
+
+.confirmation-card-heading p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+
+/* ORDER STATUS */
+
+.confirmation-status-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    margin-bottom: 24px;
+    padding: 22px;
+    border: 1px solid #d8e8d0;
+    border-radius: 16px;
+    background: #f2f8ee;
+}
+
+.status-icon {
+    display: grid;
+    width: 47px;
+    height: 47px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 14px;
+    background: #e1f0d9;
+    font-size: 1.5rem;
+}
+
+.status-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.status-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-heading h2 {
+    margin: 0;
+    color: #254d2b;
+    font-size: 1.05rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #fff0d7;
+    color: #8b5c11;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.status-content > p {
+    margin: 10px 0 0;
+    color: #61725c;
+    font-size: 0.85rem;
+    line-height: 1.75;
+}
+
+
+/* ORDER PRODUCTS */
+
+.confirmed-products {
+    display: grid;
+    gap: 18px;
+}
+
+.confirmed-product {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #edf0eb;
+}
+
+.confirmed-product:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.confirmed-product-image {
+    display: grid;
+    width: 76px;
+    height: 76px;
+    overflow: hidden;
+    place-items: center;
+    border-radius: 12px;
+    background: #edf4e9;
+}
+
+.confirmed-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.confirmed-product-emoji {
+    font-size: 2.1rem;
+}
+
+.confirmed-product-info {
+    min-width: 0;
+}
+
+.confirmed-product-info h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.confirmed-product-info p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.79rem;
+    line-height: 1.5;
+}
+
+.confirmed-product-farmer {
+    margin-top: 5px;
+    color: var(--green);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.confirmed-product-price {
+    color: var(--green-dark);
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+/* TOTALS */
+
+.confirmed-totals {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.confirmed-total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 15px 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.confirmed-total-line strong {
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.pending-delivery {
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+.confirmed-total-divider {
+    height: 1px;
+    margin: 22px 0;
+    background: var(--border);
+}
+
+.confirmed-total-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+    font-size: 0.96rem;
+    font-weight: 800;
+}
+
+.confirmed-total-final strong {
+    color: var(--green-dark);
+    font-size: 1.28rem;
+    text-align: right;
+}
+
+.confirmed-total-note {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 0.77rem;
+    line-height: 1.6;
+}
+
+
+/* CUSTOMER DETAILS */
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px 20px;
+}
+
+.detail-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.detail-item > span {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.detail-item > strong {
+    color: var(--text);
+    font-size: 0.89rem;
+    font-weight: 700;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+}
+
+
+/* FARMER CONTACTS */
+
+.farmer-contact-list {
+    display: grid;
+    gap: 15px;
+}
+
+.farmer-contact-card {
+    padding: 18px;
+    border: 1px solid #e3eae0;
+    border-radius: 14px;
+    background: #fcfdfb;
+}
+
+.farmer-contact-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.farmer-avatar {
+    display: grid;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 13px;
+    background: #eaf4e4;
+    font-size: 1.35rem;
+}
+
+.farmer-contact-heading h3 {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+
+.farmer-contact-heading p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.farmer-contact-products {
+    margin: 15px 0;
+    padding-top: 13px;
+    border-top: 1px solid #e9eee6;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+}
+
+.farmer-contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.farmer-contact-actions a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    min-height: 39px;
+    padding: 9px 12px;
+    border: 1px solid #d6e5d0;
+    border-radius: 9px;
+    color: var(--green-dark);
+    background: #f1f8ed;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.farmer-contact-actions a:hover {
+    background: #e5f2de;
+}
+
+
+/* SIDEBAR */
+
+.confirmation-sidebar {
+    position: sticky;
+    top: 24px;
+    display: grid;
+    gap: 18px;
+}
+
+.next-steps-card {
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 5px 24px rgba(20, 50, 25, 0.035);
+}
+
+.next-steps-eyebrow {
+    color: var(--green);
+    font-size: 0.71rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.next-steps-card > h2 {
+    margin: 11px 0 25px;
+    color: var(--text);
+    font-size: 1.3rem;
+}
+
+.timeline {
+    display: grid;
+    gap: 24px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.timeline-number {
+    display: grid;
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid #d6e6ce;
+    border-radius: 50%;
+    background: #eff7e9;
+    color: var(--green-dark);
+    font-size: 0.83rem;
+    font-weight: 800;
+}
+
+.timeline-item strong {
+    display: block;
+    margin-top: 2px;
+    color: var(--text);
+    font-size: 0.87rem;
+}
+
+.timeline-item p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 0.79rem;
+    line-height: 1.7;
+}
+
+
+/* HELP CARD */
+
+.confirmation-help-card {
+    padding: 22px;
+    border: 1px solid #d9e8d2;
+    border-radius: 16px;
+    background: #f1f8ed;
+}
+
+.confirmation-help-card > span {
+    font-size: 1.7rem;
+}
+
+.confirmation-help-card h3 {
+    margin: 12px 0 0;
+    color: #2c5431;
+    font-size: 0.97rem;
+}
+
+.confirmation-help-card p {
+    margin: 9px 0 0;
+    color: #65765f;
+    font-size: 0.81rem;
+    line-height: 1.75;
+}
+
+
+/* NAVIGATION ACTIONS */
+
+.confirmation-marketplace-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 17px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.confirmation-marketplace-button span {
+    font-size: 1.2rem;
+}
+
+.confirmation-home-link {
+    color: var(--green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.confirmation-home-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ERROR STATE */
+
+.confirmation-error {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 42px 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #fff;
+    text-align: center;
+}
+
+.confirmation-error[hidden] {
+    display: none !important;
+}
+
+.confirmation-error-icon {
+    margin-bottom: 16px;
+    font-size: 3rem;
+}
+
+.confirmation-error h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.35rem;
+}
+
+.confirmation-error p {
+    margin: 13px 0 24px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+#confirmationContent[hidden] {
+    display: none !important;
+}
+
+
+/* FOOTER */
+
+.site-footer .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.footer-bottom a {
+    color: var(--green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+    .confirmation-layout {
+        grid-template-columns: minmax(0, 1fr) 290px;
+        gap: 18px;
+    }
+
+    .confirmation-card {
+        padding: 21px;
+    }
+
+    .next-steps-card {
+        padding: 21px;
+    }
+
+    .confirmed-product {
+        grid-template-columns: 65px minmax(0, 1fr);
+    }
+
+    .confirmed-product-image {
+        width: 65px;
+        height: 65px;
+    }
+
+    .confirmed-product-price {
+        grid-column: 2;
+        text-align: left;
+    }
+}
+
+@media (max-width: 760px) {
+    .confirmation-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .confirmation-sidebar {
+        position: static;
+    }
+
+    .confirmation-hero {
+        padding: 42px 0 38px;
+    }
+}
+
+@media (max-width: 520px) {
+    .confirmation-section {
+        padding: 25px 0 45px;
+    }
+
+    .success-icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    .success-icon span {
+        font-size: 2.2rem;
+    }
+
+    .order-reference {
+        display: flex;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .order-reference > span {
+        width: 100%;
+    }
+
+    .confirmation-card {
+        padding: 17px;
+        border-radius: 15px;
+    }
+
+    .confirmation-card-heading {
+        gap: 11px;
+        margin-bottom: 21px;
+    }
+
+    .card-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 1.2rem;
+    }
+
+    .confirmation-status-card {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .status-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 19px;
+    }
+
+    .detail-item.full-width {
+        grid-column: auto;
+    }
+
+    .confirmed-product {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .confirmed-product-image {
+        width: 58px;
+        height: 58px;
+    }
+
+    .confirmed-product-emoji {
+        font-size: 1.7rem;
+    }
+
+    .confirmed-product-price {
+        grid-column: 2;
+    }
+
+    .farmer-contact-card {
+        padding: 14px;
+    }
+
+    .site-footer .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+

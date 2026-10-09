@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard | HarvestHub</title>
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/farmer-auth.css">
+
+
+</head>
+
+<body class="farmer-auth-page">
+
+
+<header class="auth-header">
+    <a href="index.html" class="auth-brand">
+        <span class="brand-icon">🌱</span>
+        HarvestHub
+    </a>
+
+    <button type="button" id="farmerLogout" class="dashboard-logout">
+        Log Out
+    </button>
+</header>
+
+<main class="dashboard-container">
+
+    <section class="dashboard-welcome">
+        <span class="auth-eyebrow">FARMER WORKSPACE</span>
+
+        <h1>Welcome, <span id="dashboardFarmerName">Farmer</span>! 🌱</h1>
+
+        <p>
+            Manage your farm's presence on HarvestHub from one place.
+        </p>
+    </section>
+
+    <section class="dashboard-profile">
+
+        <div class="dashboard-profile-icon">👨‍🌾</div>
+
+        <div class="dashboard-profile-info">
+            <span class="profile-label">YOUR FARM / BUSINESS</span>
+            <h2 id="dashboardBusinessName">Your Business</h2>
+            <p id="dashboardBusinessType">Farm business</p>
+        </div>
+
+        <span class="account-badge">✓ Account Created</span>
+
+    </section>
+
+    <section class="dashboard-grid">
+
+        <article class="dashboard-card">
+            <span class="dashboard-card-icon">🌾</span>
+            <h3>My Products</h3>
+            <p>
+                Add your produce, update prices, manage stock,
+                and maintain your product listings.
+            </p>
+            <span class="coming-soon">Product management coming next</span>
+        </article>
+
+        <article class="dashboard-card">
+            <span class="dashboard-card-icon">📦</span>
+            <h3>My Orders</h3>
+            <p>
+                Keep track of orders containing your products
+                and review relevant buyer details.
+            </p>
+            <span class="coming-soon">Order management coming next</span>
+        </article>
+
+        <article class="dashboard-card">
+            <span class="dashboard-card-icon">☎️</span>
+            <h3>Farm Contact</h3>
+            <p>
+                Make sure buyers have the correct contact
+                information for your business.
+            </p>
+
+            <div class="profile-detail">
+                <span>Farmer</span>
+                <strong id="dashboardFullName">—</strong>
+            </div>
+
+            <div class="profile-detail">
+                <span>Phone</span>
+                <strong id="dashboardPhone">—</strong>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="dashboard-actions">
+        <div>
+            <h2>Ready to grow your business?</h2>
+            <p>
+                Visit the marketplace to see how your customers
+                discover fresh products.
+            </p>
+        </div>
+
+        <a href="marketplace.html" class="dashboard-marketplace-link">
+            View Marketplace →
+        </a>
+    </section>
+
+</main>
+
+<footer class="auth-footer">
+    <p>© 2026 HarvestHub. Growing opportunities together. 🌱</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/farmer-dashboard.js"></script>
+
+
+</body>
+</html>
