@@ -1,6 +1,6 @@
-/* ========================================
+/* 
 HARVESTHUB FARMER AUTHENTICATION
-======================================== */
+ */
 
 .farmer-auth-page {
 min-height: 100vh;
@@ -344,9 +344,9 @@ font-size: 0.83rem;
 margin: 0;
 }
 
-/* ========================================
+/* 
 RESPONSIVE LAYOUT
-======================================== */
+ */
 
 @media (max-width: 850px) {
 .auth-container {
@@ -423,9 +423,9 @@ padding: 14px 5%;
 
 }
 
-/* ========================================
+/* 
 FARMER DASHBOARD
-======================================== */
+ */
 
 .dashboard-container {
 width: min(1120px, 90%);
@@ -682,9 +682,9 @@ margin-top: 30px;
 
 }
 
-/* ========================================
+/* 
 FARMER PRODUCT MANAGEMENT
-======================================== */
+ */
 
 .farmer-top-nav {
 display: flex;
@@ -1159,9 +1159,9 @@ flex-direction: column;
 
 }
 
-/* ========================================
+/* 
 FARMER ORDERS
-======================================== */
+ */
 
 .farmer-orders-container {
 width: min(1160px, 92%);

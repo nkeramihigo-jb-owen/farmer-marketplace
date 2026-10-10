@@ -1,0 +1,545 @@
+/* 
+HARVESTHUB FARMER PORTAL
+ */
+
+.farmer-portal-page {
+background: #fbfcf8;
+color: #263d2c;
+}
+
+.farmer-portal-main {
+width: 100%;
+overflow: hidden;
+}
+
+.farmer-portal-hero {
+width: min(1200px, 90%);
+min-height: 570px;
+margin: 0 auto;
+padding: 70px 0;
+display: grid;
+grid-template-columns: 1.05fr 0.95fr;
+align-items: center;
+gap: 65px;
+}
+
+.portal-content {
+position: relative;
+z-index: 1;
+}
+
+.portal-eyebrow,
+.portal-section-kicker {
+display: inline-block;
+color: #548252;
+font-size: 0.76rem;
+font-weight: 800;
+letter-spacing: 1.8px;
+}
+
+.portal-eyebrow {
+padding: 11px 15px;
+background: #edf4e8;
+border-radius: 30px;
+}
+
+.portal-content h1 {
+max-width: 620px;
+margin: 27px 0 22px;
+color: #203b29;
+font-family: var(--font-heading, Georgia, serif);
+font-size: clamp(2.8rem, 5.3vw, 4.5rem);
+font-weight: 700;
+letter-spacing: -2px;
+line-height: 1.1;
+}
+
+.portal-content h1 span {
+display: block;
+color: #548252;
+}
+
+.portal-description {
+max-width: 540px;
+margin: 0;
+color: #738072;
+font-size: 1rem;
+line-height: 1.9;
+}
+
+.portal-benefits {
+display: grid;
+gap: 15px;
+margin-top: 28px;
+}
+
+.portal-benefit {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.portal-benefit > span {
+display: grid;
+width: 25px;
+height: 25px;
+flex-shrink: 0;
+place-items: center;
+color: #ffffff;
+background: #548252;
+border-radius: 50%;
+font-size: 0.8rem;
+font-weight: 800;
+}
+
+.portal-benefit p {
+margin: 0;
+color: #455c48;
+font-size: 0.9rem;
+line-height: 1.6;
+}
+
+.portal-back-link {
+display: inline-flex;
+margin-top: 30px;
+color: #47794a;
+font-size: 0.9rem;
+font-weight: 800;
+text-decoration: none;
+}
+
+.portal-back-link:hover {
+color: #245c3a;
+}
+
+.portal-visual {
+position: relative;
+min-width: 0;
+padding: 15px;
+}
+
+.portal-image-card {
+position: relative;
+min-height: 465px;
+overflow: hidden;
+background-color: #dce9d4;
+background-image:
+linear-gradient(
+180deg,
+rgba(24, 53, 31, 0.02) 30%,
+rgba(24, 53, 31, 0.55) 100%
+),
+url("../assets/images/farmer-portal.jfif");
+background-position: center;
+background-size: cover;
+border-radius: 190px 190px 24px 24px;
+box-shadow: 0 24px 65px rgba(39, 72, 41, 0.13);
+}
+
+.portal-image-overlay {
+position: absolute;
+inset: 0;
+background: linear-gradient(
+180deg,
+transparent 50%,
+rgba(20, 48, 28, 0.25) 100%
+);
+}
+
+.portal-image-caption {
+position: absolute;
+right: 25px;
+bottom: 28px;
+left: 25px;
+display: flex;
+align-items: center;
+gap: 13px;
+padding: 18px;
+color: #ffffff;
+background: rgba(255, 255, 255, 0.17);
+border: 1px solid rgba(255, 255, 255, 0.35);
+border-radius: 15px;
+backdrop-filter: blur(12px);
+}
+
+.portal-image-caption > span {
+display: grid;
+width: 45px;
+height: 45px;
+flex-shrink: 0;
+place-items: center;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 12px;
+font-size: 1.4rem;
+}
+
+.portal-image-caption strong {
+display: block;
+font-size: 0.95rem;
+}
+
+.portal-image-caption p {
+margin: 6px 0 0;
+color: rgba(255, 255, 255, 0.9);
+font-size: 0.8rem;
+}
+
+.portal-floating-note {
+position: absolute;
+top: 75px;
+right: -15px;
+display: flex;
+align-items: center;
+gap: 12px;
+max-width: 250px;
+padding: 16px 19px;
+background: #ffffff;
+border: 1px solid #edf0e8;
+border-radius: 14px;
+box-shadow: 0 12px 35px rgba(39, 72, 41, 0.12);
+}
+
+.portal-floating-note > span {
+display: grid;
+width: 43px;
+height: 43px;
+flex-shrink: 0;
+place-items: center;
+background: #edf4e8;
+border-radius: 12px;
+font-size: 1.3rem;
+}
+
+.portal-floating-note strong {
+display: block;
+color: #294832;
+font-size: 0.86rem;
+}
+
+.portal-floating-note p {
+margin: 5px 0 0;
+color: #7a8677;
+font-size: 0.74rem;
+line-height: 1.5;
+}
+
+/* ACCESS OPTIONS */
+
+.portal-access-section {
+padding: 85px 5%;
+background: #f1f5ec;
+}
+
+.portal-section-heading {
+max-width: 700px;
+margin: 0 auto 45px;
+text-align: center;
+}
+
+.portal-section-heading h2 {
+margin: 17px 0 13px;
+color: #203b29;
+font-family: var(--font-heading, Georgia, serif);
+font-size: clamp(2rem, 4vw, 3rem);
+letter-spacing: -1px;
+line-height: 1.2;
+}
+
+.portal-section-heading > p {
+max-width: 570px;
+margin: 0 auto;
+color: #738072;
+font-size: 0.95rem;
+line-height: 1.8;
+}
+
+.portal-access-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 25px;
+width: min(940px, 100%);
+margin: 0 auto;
+}
+
+.portal-access-card {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 35px;
+background: #ffffff;
+border: 1px solid #e4eadf;
+border-radius: 20px;
+box-shadow: 0 10px 30px rgba(39, 72, 41, 0.035);
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portal-access-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 17px 40px rgba(39, 72, 41, 0.08);
+}
+
+.portal-access-icon {
+display: grid;
+width: 61px;
+height: 61px;
+place-items: center;
+background: #edf4e8;
+border-radius: 17px;
+font-size: 1.8rem;
+}
+
+.portal-card-label {
+margin-top: 24px;
+color: #568354;
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.portal-access-card h3 {
+margin: 13px 0;
+color: #294832;
+font-family: var(--font-heading, Georgia, serif);
+font-size: 1.65rem;
+letter-spacing: -0.5px;
+}
+
+.portal-access-card > p {
+margin: 0;
+color: #778274;
+font-size: 0.9rem;
+line-height: 1.8;
+}
+
+.portal-access-card ul {
+display: grid;
+gap: 13px;
+width: 100%;
+margin: 23px 0 30px;
+padding: 0;
+list-style: none;
+}
+
+.portal-access-card li {
+position: relative;
+padding-left: 25px;
+color: #4c604d;
+font-size: 0.87rem;
+line-height: 1.6;
+}
+
+.portal-access-card li::before {
+position: absolute;
+top: 0;
+left: 0;
+color: #528451;
+content: "✓";
+font-weight: 900;
+}
+
+.portal-access-button {
+width: 100%;
+margin-top: auto;
+box-sizing: border-box;
+justify-content: center;
+text-align: center;
+}
+
+.login-card {
+background: #fbfcf9;
+}
+
+.login-card .portal-access-icon {
+background: #e6efe0;
+}
+
+/* HELP BANNER */
+
+.portal-help-banner {
+display: flex;
+align-items: center;
+gap: 25px;
+width: min(1100px, 90%);
+margin: 75px auto;
+padding: 35px;
+background: #ffffff;
+border: 1px solid #e5eadf;
+border-radius: 20px;
+}
+
+.portal-help-icon {
+display: grid;
+width: 65px;
+height: 65px;
+flex-shrink: 0;
+place-items: center;
+background: #edf4e8;
+border-radius: 18px;
+font-size: 1.9rem;
+}
+
+.portal-help-banner > div:nth-child(2) {
+flex: 1;
+}
+
+.portal-help-banner h2 {
+margin: 0 0 10px;
+color: #294832;
+font-family: var(--font-heading, Georgia, serif);
+font-size: 1.35rem;
+line-height: 1.4;
+}
+
+.portal-help-banner p {
+margin: 0;
+color: #778274;
+font-size: 0.88rem;
+line-height: 1.8;
+}
+
+.portal-help-link {
+flex-shrink: 0;
+color: #47794a;
+font-size: 0.86rem;
+font-weight: 800;
+text-decoration: none;
+}
+
+.portal-help-link:hover {
+color: #245c3a;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+.farmer-portal-hero {
+gap: 35px;
+}
+
+
+.portal-image-card {
+    min-height: 410px;
+}
+
+.portal-floating-note {
+    right: -5px;
+}
+
+.portal-help-banner {
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.portal-help-banner > div:nth-child(2) {
+    min-width: 60%;
+}
+
+.portal-help-link {
+    margin-left: 90px;
+}
+
+
+}
+
+@media (max-width: 750px) {
+.farmer-portal-hero {
+grid-template-columns: 1fr;
+gap: 35px;
+padding: 55px 0;
+}
+
+
+.portal-content h1 {
+    font-size: clamp(2.7rem, 9vw, 4rem);
+}
+
+.portal-visual {
+    width: min(480px, 100%);
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.portal-image-card {
+    min-height: 420px;
+    border-radius: 160px 160px 22px 22px;
+}
+
+.portal-floating-note {
+    right: 0;
+}
+
+.portal-access-section {
+    padding: 65px 5%;
+}
+
+.portal-access-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+}
+
+.portal-help-banner {
+    width: 90%;
+    box-sizing: border-box;
+    margin: 55px auto;
+    padding: 25px;
+}
+
+.portal-help-link {
+    margin-left: 0;
+}
+
+
+}
+
+@media (max-width: 480px) {
+.farmer-portal-hero {
+padding-top: 40px;
+}
+
+
+.portal-content h1 {
+    letter-spacing: -1.3px;
+}
+
+.portal-image-card {
+    min-height: 350px;
+}
+
+.portal-floating-note {
+    top: 40px;
+    max-width: 215px;
+    padding: 12px;
+}
+
+.portal-image-caption {
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding: 13px;
+}
+
+.portal-access-card {
+    padding: 25px;
+}
+
+.portal-help-banner {
+    gap: 15px;
+}
+
+.portal-help-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+}
+
+.portal-help-banner > div:nth-child(2) {
+    min-width: 0;
+    width: 100%;
+}
+
+.portal-help-banner h2 {
+    font-size: 1.2rem;
+}
+
+
+}
