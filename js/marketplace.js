@@ -436,23 +436,6 @@ resetButton.addEventListener("click", function () {
     selectCategory("All");
 });
 
-/*
- * Mobile navigation.
- */
-const menuButton = document.getElementById("mobileMenuButton");
-const navigation = document.querySelector(".main-nav");
-
-if (menuButton && navigation) {
-    menuButton.addEventListener("click", function () {
-        const isOpen = navigation.classList.toggle("nav-open");
-
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute(
-            "aria-label",
-            isOpen ? "Close navigation" : "Open navigation"
-        );
-    });
-}
 
 /*
  * Footer year.
