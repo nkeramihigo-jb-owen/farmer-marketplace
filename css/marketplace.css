@@ -1144,9 +1144,7 @@ transition: none;
 
 
 }
-/* 
-HARVESTHUB MOBILE NAVIGATION
- */
+/* MARKETPLACE MOBILE NAVIGATION */
 
 .mobile-menu-button {
 display: none;
@@ -1154,113 +1152,98 @@ align-items: center;
 justify-content: center;
 width: 44px;
 height: 44px;
-padding: 0;
-border: 1px solid #dce7dd;
+border: 1px solid var(--border);
 border-radius: 10px;
-background: #ffffff;
-color: #245c3a;
+background: var(--white);
+color: var(--green);
 font-size: 25px;
-line-height: 1;
 cursor: pointer;
 flex-shrink: 0;
 position: relative;
-z-index: 1002;
+z-index: 102;
 }
 
 .mobile-menu-button:hover {
-background: #f0f6f0;
+background: var(--green-pale);
 }
 
-.mobile-menu-button:focus-visible {
-outline: 3px solid #a8c99a;
-outline-offset: 3px;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 .site-header {
-position: relative;
+position: sticky;
+top: 0;
 display: flex;
 flex-wrap: wrap;
-align-items: center;
 justify-content: space-between;
+align-items: center;
 gap: 10px;
+padding: 14px 5%;
 }
 
 
-.site-header > .brand {
+.brand {
     order: 1;
-    margin-right: auto;
 }
 
-.site-header > .header-actions {
-    order: 2;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 0;
-}
-
-.site-header > .header-actions .button {
-    display: none;
-}
-
-.site-header > .mobile-menu-button {
+.mobile-menu-button {
     display: inline-flex;
-    order: 3;
+    order: 2;
+    margin-left: auto;
 }
 
-.site-header > .main-nav {
+.header-actions {
     display: none;
-    order: 4;
-    flex: 0 0 100%;
-    width: 100%;
-    margin: 8px 0 0;
-    padding: 10px 0;
+}
+
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    display: none;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
-    border-top: 1px solid #e5ece6;
-    background: #ffffff;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px 5% 20px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.08);
 }
 
-.site-header > .main-nav.nav-open {
+.main-nav.nav-open {
     display: flex !important;
 }
 
-.site-header > .main-nav a {
+.main-nav a {
     display: block;
     width: 100%;
-    padding: 13px 14px;
+    padding: 13px 12px;
     border-radius: 8px;
-    color: #26392b;
-    text-decoration: none;
 }
 
-.site-header > .main-nav a:hover,
-.site-header > .main-nav a.nav-active {
-    background: #edf5ee;
-    color: #245c3a;
+.main-nav a:hover,
+.main-nav a.nav-active {
+    background: var(--green-pale);
 }
 
 
 }
 
 @media (max-width: 420px) {
-.site-header > .brand {
-font-size: 18px;
+.brand {
+font-size: 19px;
 }
 
 
-.site-header > .header-actions {
-    gap: 5px;
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 21px;
 }
 
-.site-header .cart-link {
-    gap: 4px;
-    font-size: 12px;
-}
-
-.site-header > .mobile-menu-button {
+.mobile-menu-button {
     width: 40px;
     height: 40px;
 }
