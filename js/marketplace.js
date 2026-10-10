@@ -16,6 +16,9 @@ let selectedCategory = "All";
 let searchTerm = "";
 let toastTimer;
 
+/*
+ * Escape dynamic text before inserting it into HTML.
+ */
 function escapeHTML(value) {
     return String(value ?? "").replace(/[&<>"']/g, function (character) {
         const entities = {
@@ -30,10 +33,46 @@ function escapeHTML(value) {
     });
 }
 
+/*
+ * Get products from the shared HarvestHub data module.
+ */
 function getProducts() {
     return window.HarvestHub.getProducts();
 }
 
+/*
+ * Resolve an image filename or path.
+ *
+ * Examples:
+ * eggs.jfif                  -> assets/images/eggs.jfif
+ * assets/images/eggs.jfif    -> assets/images/eggs.jfif
+ * ../assets/images/eggs.jfif -> ../assets/images/eggs.jfif
+ *
+ * Full URLs and data URLs are preserved.
+ */
+function getImagePath(image) {
+    const value = String(image || "").trim();
+
+    if (!value) {
+        return "";
+    }
+
+    if (
+        /^(https?:\/\/|data:image\/|blob:|\/|\.\/|\.\.\/)/i.test(value)
+    ) {
+        return value;
+    }
+
+    if (value.startsWith("assets/")) {
+        return value;
+    }
+
+    return "assets/images/" + value;
+}
+
+/*
+ * Filter and sort the available products.
+ */
 function getVisibleProducts() {
     let products = getProducts().filter(function (product) {
         return Number(product.quantity) > 0;
@@ -73,7 +112,9 @@ function getVisibleProducts() {
         });
     } else if (sortMode === "name") {
         products.sort(function (a, b) {
-            return a.name.localeCompare(b.name);
+            return String(a.name || "").localeCompare(
+                String(b.name || "")
+            );
         });
     } else {
         products.sort(function (a, b) {
@@ -85,13 +126,47 @@ function getVisibleProducts() {
     return products;
 }
 
+/*
+ * Render a consistent image area.
+ *
+ * Real images are loaded from assets/images/.
+ * If an image cannot be loaded, a neutral placeholder appears.
+ * No hardcoded product emojis are used as image replacements.
+ */
+function renderProductImage(product, name, imagePath) {
+    if (!imagePath) {
+        return `
+            <div class="product-image-fallback"
+                 role="img"
+                 aria-label="${name} image unavailable">
+                <span>Image unavailable</span>
+            </div>
+        `;
+    }
+
+    return `
+        <img
+            class="product-image"
+            src="${escapeHTML(imagePath)}"
+            alt="${name}"
+            loading="lazy"
+            data-product-image
+        >
+    `;
+}
+
+/*
+ * Render an individual product card.
+ */
 function renderProduct(product) {
     const id = escapeHTML(product.id);
-    const name = escapeHTML(product.name);
-    const category = escapeHTML(product.category);
-    const farmer = escapeHTML(product.farmerBusiness || "Independent Farmer");
-    const image = escapeHTML(product.image || "");
-    const emoji = escapeHTML(product.emoji || "🌾");
+    const name = escapeHTML(product.name || "Unnamed Product");
+    const category = escapeHTML(product.category || "Agricultural Product");
+    const farmer = escapeHTML(
+        product.farmerBusiness || "Independent Farmer"
+    );
+
+    const imagePath = getImagePath(product.image);
     const unit = escapeHTML(product.unit || "item");
 
     const price = window.HarvestHub.formatUGX(product.price);
@@ -101,29 +176,23 @@ function renderProduct(product) {
         ? '<span class="product-badge">Farm Favourite</span>'
         : "";
 
-    const imageMarkup = image
-        ? `
-            <img
-                class="product-image"
-                src="${image}"
-                alt="${name}"
-                loading="lazy"
-                data-fallback-emoji="${emoji}"
-            >
-          `
-        : `
-            <div class="product-image-fallback" role="img"
-                 aria-label="${name}">
-                ${emoji}
-            </div>
-          `;
+    const productURL =
+        "product-details.html?id=" +
+        encodeURIComponent(String(product.id));
+
+    const imageMarkup = renderProductImage(
+        product,
+        name,
+        imagePath
+    );
 
     return `
         <article class="product-card">
 
-            <a class="product-image-link"
-               href="product-details.html?id=${encodeURIComponent(product.id)}"
-               aria-label="View ${name} details">
+            <a
+                class="product-image-link"
+                href="${productURL}"
+                aria-label="View ${name} details">
 
                 <div class="product-image-wrap">
                     ${imageMarkup}
@@ -134,19 +203,24 @@ function renderProduct(product) {
 
             <div class="product-card-body">
 
-                <span class="product-category">${category}</span>
+                <span class="product-category">
+                    ${category}
+                </span>
 
                 <h3 class="product-name">
-                    <a href="product-details.html?id=${encodeURIComponent(product.id)}">
+                    <a href="${productURL}">
                         ${name}
                     </a>
                 </h3>
 
                 <div class="product-farmer">
-                    <span class="product-farmer-icon">🌱</span>
+                    <span class="product-farmer-icon" aria-hidden="true">
+                        🌱
+                    </span>
+
                     <span>
                         Sold by
-                        <a href="product-details.html?id=${encodeURIComponent(product.id)}">
+                        <a href="${productURL}">
                             ${farmer}
                         </a>
                     </span>
@@ -154,28 +228,28 @@ function renderProduct(product) {
 
                 <div class="product-card-divider"></div>
 
-                <div class="product-card-bottom">
-
-                    <div class="product-price">
-                        ${price}
-                        <span class="product-unit">per ${unit}</span>
-                    </div>
-
-                    <button
-                        class="add-cart-button"
-                        type="button"
-                        data-add-cart="${id}"
-                        aria-label="Add ${name} to cart"
-                        ${stock < 1 ? "disabled" : ""}
-                    >
-                        +
-                    </button>
-
+                <div class="product-price">
+                    ${price}
+                    <span class="product-unit">
+                        per ${unit}
+                    </span>
                 </div>
 
                 <div class="product-stock">
                     ${stock} ${unit}${stock === 1 ? "" : "s"} available
                 </div>
+
+                <button
+                    class="add-cart-button"
+                    type="button"
+                    data-add-cart="${id}"
+                    aria-label="Add ${name} to cart"
+                    ${stock < 1 ? "disabled" : ""}>
+
+                    <span aria-hidden="true">🛒</span>
+                    <span>Add to Cart</span>
+
+                </button>
 
             </div>
 
@@ -183,13 +257,43 @@ function renderProduct(product) {
     `;
 }
 
+/*
+ * Handle failed image requests without replacing the image
+ * with an emoji.
+ */
+function attachImageFallbacks() {
+    grid.querySelectorAll("img[data-product-image]").forEach(function (img) {
+        img.addEventListener("error", function () {
+            const fallback = document.createElement("div");
+
+            fallback.className = "product-image-fallback";
+            fallback.setAttribute("role", "img");
+            fallback.setAttribute(
+                "aria-label",
+                img.alt + " image unavailable"
+            );
+
+            const message = document.createElement("span");
+            message.textContent = "Image unavailable";
+
+            fallback.appendChild(message);
+
+            img.replaceWith(fallback);
+        }, { once: true });
+    });
+}
+
+/*
+ * Update the product grid and filter information.
+ */
 function renderProducts() {
     const products = getVisibleProducts();
 
     grid.innerHTML = products.map(renderProduct).join("");
 
     productCount.textContent =
-        products.length + (products.length === 1 ? " product" : " products");
+        products.length +
+        (products.length === 1 ? " product" : " products");
 
     emptyResults.hidden = products.length !== 0;
     grid.hidden = products.length === 0;
@@ -201,26 +305,17 @@ function renderProducts() {
         activeFilter.textContent =
             'Search results for "' + searchTerm + '"';
     } else if (selectedCategory !== "All") {
-        activeFilter.textContent =
-            "Showing " + selectedCategory;
+        activeFilter.textContent = "Showing " + selectedCategory;
     } else {
         activeFilter.textContent = "Showing all available products";
     }
 
-    grid.querySelectorAll("img[data-fallback-emoji]").forEach(function (img) {
-        img.addEventListener("error", function () {
-            const fallback = document.createElement("div");
-
-            fallback.className = "product-image-fallback";
-            fallback.setAttribute("role", "img");
-            fallback.setAttribute("aria-label", img.alt);
-            fallback.textContent = img.dataset.fallbackEmoji || "🌾";
-
-            img.replaceWith(fallback);
-        }, { once: true });
-    });
+    attachImageFallbacks();
 }
 
+/*
+ * Display a confirmation message after cart actions.
+ */
 function showToast(message) {
     clearTimeout(toastTimer);
 
@@ -232,6 +327,9 @@ function showToast(message) {
     }, 2600);
 }
 
+/*
+ * Select a category and update the active category button.
+ */
 function selectCategory(category) {
     selectedCategory = category;
 
@@ -245,11 +343,17 @@ function selectCategory(category) {
     renderProducts();
 }
 
+/*
+ * Search products as the buyer types.
+ */
 searchInput.addEventListener("input", function () {
     searchTerm = searchInput.value.trim();
     renderProducts();
 });
 
+/*
+ * Submit the search and move the buyer to the product section.
+ */
 searchForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -262,8 +366,14 @@ searchForm.addEventListener("submit", function (event) {
     });
 });
 
+/*
+ * Sort products.
+ */
 sortSelect.addEventListener("change", renderProducts);
 
+/*
+ * Category filtering.
+ */
 document.querySelectorAll(".category-card").forEach(function (button) {
     button.setAttribute(
         "aria-pressed",
@@ -275,10 +385,13 @@ document.querySelectorAll(".category-card").forEach(function (button) {
     });
 });
 
+/*
+ * Add a product to the cart.
+ */
 grid.addEventListener("click", function (event) {
     const button = event.target.closest("[data-add-cart]");
 
-    if (!button) {
+    if (!button || button.disabled) {
         return;
     }
 
@@ -290,16 +403,30 @@ grid.addEventListener("click", function (event) {
     showToast(result.message);
 
     if (result.success) {
-        const originalText = button.textContent;
+        button.disabled = true;
 
-        button.textContent = "✓";
+        const originalHTML = button.innerHTML;
 
-        setTimeout(function () {
-            button.textContent = originalText;
-        }, 900);
+        button.innerHTML = `
+            <span aria-hidden="true">✓</span>
+            <span>Added to Cart</span>
+        `;
+
+        button.classList.add("cart-added");
+
+        window.setTimeout(function () {
+            button.innerHTML = originalHTML;
+            button.classList.remove("cart-added");
+            button.disabled = false;
+        }, 1100);
     }
+
+    window.HarvestHub.updateCartCount();
 });
 
+/*
+ * Reset the search, category, and sorting filters.
+ */
 resetButton.addEventListener("click", function () {
     searchInput.value = "";
     searchTerm = "";
@@ -309,32 +436,51 @@ resetButton.addEventListener("click", function () {
     selectCategory("All");
 });
 
+/*
+ * Mobile navigation.
+ */
 const menuButton = document.getElementById("mobileMenuButton");
 const navigation = document.querySelector(".main-nav");
 
-menuButton.addEventListener("click", function () {
-    const isOpen = navigation.classList.toggle("nav-open");
+if (menuButton && navigation) {
+    menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("nav-open");
 
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-    );
-});
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+    });
+}
 
-document.getElementById("currentYear").textContent =
-    new Date().getFullYear();
+/*
+ * Footer year.
+ */
+const yearElement = document.getElementById("currentYear");
 
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
+/*
+ * Refresh product data when another tab changes localStorage.
+ */
 window.addEventListener("storage", function (event) {
+    const app = window.HarvestHub;
+
     if (
-        event.key === window.HarvestHub.STORAGE_KEYS.products ||
-        event.key === window.HarvestHub.STORAGE_KEYS.cart
+        event.key === app.STORAGE_KEYS.products ||
+        event.key === app.STORAGE_KEYS.cart
     ) {
         renderProducts();
-        window.HarvestHub.updateCartCount();
+        app.updateCartCount();
     }
 });
 
+/*
+ * Initial page setup.
+ */
 window.HarvestHub.updateCartCount();
 renderProducts();
 
