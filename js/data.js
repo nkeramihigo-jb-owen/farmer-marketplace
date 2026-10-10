@@ -235,12 +235,52 @@ function writeJSON(key, value) {
 function initializeProducts() {
     const saved = readJSON(STORAGE_KEYS.products, null);
 
-    // Only seed demo products when no product list exists.
-    // Existing farmer listings are not overwritten.
     if (!Array.isArray(saved)) {
         writeJSON(STORAGE_KEYS.products, starterProducts);
+        return;
     }
-}
+
+    // Update image paths for existing demo products without
+    // overwriting farmer-created products or other saved data.
+    const imageUpdates = {
+        "demo-tomatoes": "assets/images/tomatoes.jfif",
+        "demo-maize": "assets/images/maize.jfif",
+        "demo-potatoes": "assets/images/potatoes.jfif",
+        "demo-bananas": "assets/images/bananas.jfif",
+        "demo-cabbage": "assets/images/cabbage.jfif",
+        "demo-beans": "assets/images/beans.jfif",
+        "demo-pineapple": "assets/images/pineapples.jfif",
+        "demo-milk": "assets/images/milk.jfif",
+        "demo-eggs": "assets/images/eggs.jfif",
+        "demo-sweet-potatoes": "assets/images/sweet-potatoes.jfif",
+        "demo-onions": "assets/images/onions.jfif",
+        "demo-chicken": "assets/images/chicken.jfif"
+    };
+
+    let changed = false;
+
+    const updatedProducts = saved.map(function (product) {
+        if (
+            product.demo === true &&
+            imageUpdates[product.id] &&
+            product.image !== imageUpdates[product.id]
+        ) {
+            changed = true;
+
+            return {
+                ...product,
+                image: imageUpdates[product.id]
+            };
+        }
+
+        return product;
+    });
+
+    if (changed) {
+        writeJSON(STORAGE_KEYS.products, updatedProducts);
+    }
+
+    }
 
 function getProducts() {
     initializeProducts();
