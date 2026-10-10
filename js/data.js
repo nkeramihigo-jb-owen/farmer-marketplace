@@ -10,6 +10,8 @@ const STORAGE_KEYS = {
     currentFarmer: "harvestHubCurrentFarmer"
 };
 
+// Demo products use image files stored in assets/images/.
+// Keep these filenames consistent with the actual files in that folder.
 const starterProducts = [
     {
         id: "demo-tomatoes",
@@ -86,7 +88,7 @@ const starterProducts = [
         farmerName: "John Mukasa",
         farmerPhone: "+256700000001",
         description: "Fresh cabbage for family meals and food businesses.",
-        image: "",
+        image: "assets/images/cabbage.jfif",
         emoji: "🥬",
         featured: false,
         demo: true
@@ -102,7 +104,7 @@ const starterProducts = [
         farmerName: "Sarah Namusoke",
         farmerPhone: "+256700000002",
         description: "Dry beans offered by a farming cooperative.",
-        image: "",
+        image: "assets/images/beans.jfif",
         emoji: "🫘",
         featured: false,
         demo: true
@@ -118,7 +120,7 @@ const starterProducts = [
         farmerName: "Mary Akello",
         farmerPhone: "+256700000004",
         description: "Fresh pineapples available from a local farm.",
-        image: "",
+        image: "assets/images/pineapples.jfif",
         emoji: "🍍",
         featured: false,
         demo: true
@@ -134,7 +136,7 @@ const starterProducts = [
         farmerName: "David Ssemanda",
         farmerPhone: "+256700000005",
         description: "Fresh milk advertised by a dairy farming business.",
-        image: "",
+        image: "assets/images/milk.jfif",
         emoji: "🥛",
         featured: false,
         demo: true
@@ -150,7 +152,7 @@ const starterProducts = [
         farmerName: "Grace Nambi",
         farmerPhone: "+256700000006",
         description: "Fresh eggs offered by a poultry farming business.",
-        image: "",
+        image: "assets/images/eggs.jfif",
         emoji: "🥚",
         featured: false,
         demo: true
@@ -166,7 +168,7 @@ const starterProducts = [
         farmerName: "Peter Kato",
         farmerPhone: "+256700000003",
         description: "Fresh sweet potatoes harvested by a local farm.",
-        image: "",
+        image: "assets/images/sweet-potatoes.jfif",
         emoji: "🍠",
         featured: false,
         demo: true
@@ -182,7 +184,7 @@ const starterProducts = [
         farmerName: "John Mukasa",
         farmerPhone: "+256700000001",
         description: "Red onions for household and commercial cooking.",
-        image: "",
+        image: "assets/images/onions.jfif",
         emoji: "🧅",
         featured: false,
         demo: true
@@ -198,7 +200,7 @@ const starterProducts = [
         farmerName: "Grace Nambi",
         farmerPhone: "+256700000006",
         description: "Local chicken offered by a poultry farming business.",
-        image: "",
+        image: "assets/images/chicken.jfif",
         emoji: "🐔",
         featured: false,
         demo: true
@@ -233,6 +235,8 @@ function writeJSON(key, value) {
 function initializeProducts() {
     const saved = readJSON(STORAGE_KEYS.products, null);
 
+    // Only seed demo products when no product list exists.
+    // Existing farmer listings are not overwritten.
     if (!Array.isArray(saved)) {
         writeJSON(STORAGE_KEYS.products, starterProducts);
     }
